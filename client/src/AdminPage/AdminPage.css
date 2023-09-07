@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Cairo Bold';
+    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Cairo regular';
+    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Regular.ttf');
+}
+
+#AdminPage {
+    height: 100vh;
+    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
+}
+
+/* ....................... Admin page header start ....................... */
+
+#AdminPageHeader {
+    height: 11%;
+    padding: 0 35px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px 1px rgb(0 0 0 / 35%);
+}
+
+#AdminPageHeader > div:last-of-type {
+    position: relative;
+    padding: 7px 25px;
+    cursor: pointer;
+    background-color: #459fff;
+    color: white;
+    border-radius: 7px;
+}
+
+#AdminPageHeader > div:last-of-type > div:first-of-type {
+    font-size: 1.3rem;
+    font-family: 'Cairo regular';
+}
+
+#AdminPageHeader > div:last-of-type > div:last-of-type {
+    position: absolute;
+    bottom: -165%;
+    width: 155%;
+    height: 150%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
+}
+
+#AdminPageHeader > div:last-of-type > div:last-of-type a {
+    font-size: 1.2rem;
+}
+
+.HideLogoutBtn {
+    display: none !important;
+}
+
+/* ....................... Admin page header end ....................... */
+
+
+/* ....................... Admin page section start ....................... */
+
+#AdminPageSection {
+    height: 89%;
+}
+
+/* ....................... Admin page section end ....................... */
