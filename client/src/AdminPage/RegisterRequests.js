@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function RegisterRequests({ data }) {
+export default function RegisterRequests({ data, callback }) {
+
+  const SelectRow = (e) => {
+    const Parent = e.target.parentElement;
+    Parent.classList.toggle('SelectRow');
+    callback(prev => [...prev, parseInt(Parent.firstElementChild.textContent)]);
+  };
+
   return (
     <table>
       <thead>
@@ -18,7 +25,7 @@ export default function RegisterRequests({ data }) {
       <tbody>
         { data.map((ele, idx) => {
           return (
-            <tr key={idx}>
+            <tr key={idx} onClick={SelectRow}>
               <td>{ ele.StudentId }</td>
               <td>{ ele.FirstName }</td>
               <td>{ ele.LastName }</td>

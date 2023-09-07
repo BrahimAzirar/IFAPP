@@ -137,6 +137,11 @@
 
 #RegisterRequestsContent table td {
     font-family: 'Cairo regular';
+    cursor: pointer;
+}
+
+.SelectRow {
+    background-color: rgb(201, 201, 201);
 }
 
 #RegisterRequestsContent table, th,

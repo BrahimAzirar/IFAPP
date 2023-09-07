@@ -1,19 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import RegisterRequests from './RegisterRequests';
+import { CSVLink } from 'react-csv';
 import './AdminPage.css';
 
 export default function AdminPage() {
 
   const [Requests, setRequests] = useState([]);
   const [Req, setReq] = useState([]);
+  const [TargetRows, setTargetRows] = useState([]);
+  const [TargetRowsData, setTargetRowsData] = useState([]);
 
   const LogouBtn = useRef();
+  const apidomain = process.env.REACT_APP_API_DOMIAN;
 
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const apidomain = process.env.REACT_APP_API_DOMIAN;
         const result = (await axios.get(`${apidomain}/admin/getAllRequests`)).data;
         if (result.err) new Error(result.err);
         if (result.response.length) {
@@ -26,6 +29,20 @@ export default function AdminPage() {
 
     fetchRequests();
   }, []);
+
+  useEffect(() => {
+    if (TargetRows.length) {
+      Requests.forEach(ele => {
+        if (TargetRows.indexOf(ele.StudentId)) setTargetRowsData(ele);
+      });
+    };
+  }, [TargetRows]);
+
+  useEffect(() => console.log(TargetRowsData), [TargetRowsData]);
+
+  const DeleteAllRequests = () => {
+    axios.delete(`${apidomain}/admin/DeleteAllRequests`);
+  }
 
   const ShowLogoutBtn = () => {
       LogouBtn.current.classList.toggle('HideLogoutBtn');
@@ -61,15 +78,23 @@ export default function AdminPage() {
             <div id='RegisterRequestsContent'>
               { 
                 Req.length ?
-                  <RegisterRequests data={Req} /> :
+                  <RegisterRequests data={Req} callback={setTargetRows}/> :
                   <p className='notdata'>No Data ...</p>
               }
             </div>
             <div id='RegisterRequestsFooter'>
               <button className='RemoveBtn'>حذف الكل</button>
               <button className='RemoveBtn'>حذف</button>
-              <button className='SaveBtn'>احفظ الكل</button>
-              <button className='SaveBtn'>احفظ</button>
+              <button className='SaveBtn'>
+                <CSVLink data={Req} style={{ color: 'white' }}>
+                  احفظ الكل
+                </CSVLink>
+              </button>
+              <button className='SaveBtn'>
+                <CSVLink data={Req} style={{ color: 'white' }}>
+                  احفظ
+                </CSVLink>
+              </button>
             </div>
         </section>
     </div>
