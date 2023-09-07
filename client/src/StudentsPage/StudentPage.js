@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import axios from 'axios';
 import './StudentPage.css';
 import './Responsive.css';
 
@@ -35,7 +36,7 @@ export default function StudentPage() {
         }, 5000);
     }, []);
 
-    const Registring = (e) => {
+    const Registring = async (e) => {
         e.preventDefault();
 
         const InputIsEmpty = (object) => {
@@ -54,9 +55,13 @@ export default function StudentPage() {
 
         try {
             const data = Object.fromEntries(new FormData(TargetForm.current));
+            const apidomain = process.env.REACT_APP_API_DOMIAN;
             if (InputIsEmpty(data)) throw new Error('هناك بعض الحقول فارغة');
             if (CheckEmailIsNotValid(data.Email)) throw new Error('هذا الايمايل غير صلاح اذخل ايمايل اخر');
             if (CheckPhoneNumberIsNotValid(data.Tele)) throw new Error('هذا رقم غير صلاح اذخل رقما اخر');
+            const result = (await axios.post(`${apidomain}/students/register`, data)).data;
+            if (result.err) throw new Error(result.err);
+            if (result.response) alert('تم التسجيل بنجاح');
         } catch (error) {
             alert(error.message);
         }
