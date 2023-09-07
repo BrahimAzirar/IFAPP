@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './StudentPage.css';
+import './Responsive.css';
 
 export default function StudentPage() {
 
@@ -13,6 +14,8 @@ export default function StudentPage() {
     ];
 
     useEffect(() => {
+        document.title = 'IFFAP | تسجيل';
+
         const FirstImage = parentOfImages.current.firstElementChild;
         FirstImage.classList.add('InTheFrontEnd');
 
@@ -72,7 +75,8 @@ export default function StudentPage() {
         <section>
             <div>
                 <h1>من نحن</h1>
-                <p>يقدم معهد التمريض IFAPP برامج تعليمية وتدريبية عالية الجودة في مجال التمريض، مما يوفر للطلاب المعرفة والمهارات اللازمة لمهنة التمريض الناجحة. انضم إلينا للشروع في رحلة مجزية في مجال الرعاية الصحية.</p>
+                {/* <p>يقدم معهد التمريض IFAPP برامج تعليمية وتدريبية عالية الجودة في مجال التمريض، مما يوفر للطلاب المعرفة والمهارات اللازمة لمهنة التمريض الناجحة. انضم إلينا للشروع في رحلة مجزية في مجال الرعاية الصحية.</p> */}
+                <p>اكتشف معهد التمريض IFAPP، منصة الانطلاق إلى عالم التميز في التمريض. نحن متخصصون في تعليم التمريض الشامل الذي يمكّنك من الحصول على مهنة مجزية في مجال الرعاية الصحية. انضم إلى معهدنا للاستفادة من الموجهين المتمرسين والتدريب العملي وبيئة التعلم الداعمة. رحلتك لتصبح متخصصًا ماهرًا في الرعاية الصحية تبدأ هنا. لا تتردد - سجل اليوم وابدأ الطريق نحو مهنة تمريضية مُرضية مع IFAPP.</p>
             </div>
             <form ref={TargetForm}>
                 <div>

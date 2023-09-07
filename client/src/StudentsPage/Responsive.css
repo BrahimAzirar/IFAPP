@@ -1,0 +1,135 @@
+@media (min-width: 320px) and (max-width: 775px) {
+    #StudentPage header {
+        height: 85vh;
+    }
+
+    #StudentPage section::before {
+        display: none;
+    }
+
+    #StudentPage section {
+        display: block;
+        padding: 10px 20px;
+    }
+
+    #StudentPage section > div:first-child, #StudentPage section > form {
+        width: 100%;
+    }
+
+    #StudentPage section > div:first-child h1 {
+        font-size: 1.7rem;
+        margin: 15px 0 2px 0;
+    }
+
+    #StudentPage section > div:first-child p {
+        font-size: 82%;
+        line-height: 25px;
+    }
+
+    #StudentPage section > form div:nth-child(1) {
+        padding: 35px 0 7px 0;
+        font-size: 1rem;
+    }
+
+    #StudentPage section > form > div {
+        grid-column: span 2;
+    }
+
+    .InputsStyle {
+        border-bottom: 2px solid #6868ffba;
+        font-size: 0.8rem;
+    }
+
+    #StudentPage section > form > div:nth-child(8) button {
+        padding: 3px 0;
+        font-size: .7rem;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 775px) {
+    .InputsStyle {
+        font-size: .9rem;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 775px) {
+    #StudentPage section > form > div:nth-child(8) button {
+        padding: 4px 0;
+        font-size: .8rem;
+    }
+}
+
+@media (min-width: 560px) and (max-width: 775px) {
+    #StudentPage section > div:first-child p {
+        font-size: 90%;
+    }
+
+    .InputsStyle {
+        border-bottom: 3px solid #6868ffba;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 775px) {
+    #StudentPage section > div:first-child p {
+        font-size: 93%;
+    }
+}
+
+@media (min-width: 775px) and (max-width: 965px) {
+    #StudentPage section > div:first-child h1 {
+        margin: 5px 0 20px 0;
+        font-size: 1.6rem;
+    }
+
+    #StudentPage section > div:first-child p {
+        font-size: 1rem;
+    }
+
+    #StudentPage section > form > div {
+        grid-column: span 2;
+    }
+
+    #StudentPage section > form div:nth-child(1) {
+        padding: 10px 0 10px 0;
+        font-size: 1.1rem;
+    }
+
+    #StudentPage section > form > div:nth-child(8) button {
+        padding: 5px 0;
+        font-size: .8rem;
+    }
+}
+
+@media (min-width: 920px) and (max-width: 965px) {
+    #StudentPage section > div:first-child p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 965px) and (max-width: 1140px) {
+    #StudentPage section > div:first-child p {
+        font-size: 1rem;
+        line-height: 35px;
+    }
+
+    #StudentPage section > form > div:nth-child(8) button {
+        padding: 5px 0;
+        font-size: .8rem;
+    }
+
+    #StudentPage section > form div:nth-child(1) {
+        padding: 10px 0 5px 0;
+        font-size: 1.1rem;
+    }
+
+    #StudentPage section > div:first-child h1 {
+        margin: 7px 0 18px 0;
+        font-size: 1.7rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1140px) {
+    #StudentPage section > div:first-child p {
+        font-size: 1.1rem;
+    }
+}

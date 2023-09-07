@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Cairo Bold';
-    src: url('../../public/Fonts/Cairo/static/Cairo-Bold.ttf');
+    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Bold.ttf');
 }
 
 @font-face {
     font-family: 'Cairo regular';
-    src: url('../../public/Fonts/Cairo/static/Cairo-Regular.ttf');
+    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Regular.ttf');
 }
 
 * {
@@ -17,8 +17,7 @@
 }
 
 #StudentPage {
-    /* background-color: #eee; */
-    background: linear-gradient(301deg, #51dbfae0, white);
+    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
 }
 
 /*...................... Header Start ......................*/
@@ -76,7 +75,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* background: #2ee22edc; */
     background-color: #6868ff;
     border-radius: 3px;
 
@@ -88,7 +86,7 @@
 
 #StudentPage section > div:first-child h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 5px 0 20px 0;
     font-size: 2rem;
     font-family: 'Cairo Bold';
     color: #6868ff;
@@ -98,8 +96,9 @@
     text-align: center;
     font-family: 'Cairo regular';
     font-size: 1.2rem;
-    color: #6868ff;
+    color: #6868ffba;
     font-weight: bold;
+    line-height: 40px;
 }
 
 #StudentPage section > form {
@@ -128,13 +127,25 @@
 }
 
 .InputsStyle {
+    /* padding: 5px 7px;
+    font-family: 'Cairo regular';
+    border-radius: 5px; */
+    /* font-size: .7rem; */
+    /* border: 2px solid rgba(111, 111, 111, 0.89);
+    background-color: rgb(246, 246, 246); */
+
     padding: 5px 7px;
     font-family: 'Cairo regular';
-    background: rgb(255, 255, 255);
-    border-radius: 5px;
-    /* font-size: .7rem; */
-    border: 2px solid rgba(111, 111, 111, 0.89);
-    background-color: rgb(246, 246, 246);
+    border: none;
+    border-bottom: 3px solid #6868ffba;
+    background-color: transparent;
+    color: #6868ff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.InputsStyle::placeholder {
+    color: #6868ffd0;
 }
 
 .InputWith97 {
@@ -156,6 +167,7 @@
     font-size: 1rem;
     cursor: pointer;
     font-family: 'Cairo regular';
+    transition: .3s;
 }
 
 #StudentPage section > form > div:nth-child(8) button:hover {

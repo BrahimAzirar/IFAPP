@@ -1,26 +1,21 @@
-Cairo Variable Font
-===================
+Noto Naskh Arabic Variable Font
+===============================
 
-This download contains Cairo as both a variable font and static fonts.
+This download contains Noto Naskh Arabic as both a variable font and static fonts.
 
-Cairo is a variable font with these axes:
-  slnt
+Noto Naskh Arabic is a variable font with this axis:
   wght
 
 This means all the styles are contained in a single file:
-  Cairo-VariableFont_slnt,wght.ttf
+  NotoNaskhArabic-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Cairo:
-  static/Cairo-ExtraLight.ttf
-  static/Cairo-Light.ttf
-  static/Cairo-Regular.ttf
-  static/Cairo-Medium.ttf
-  static/Cairo-SemiBold.ttf
-  static/Cairo-Bold.ttf
-  static/Cairo-ExtraBold.ttf
-  static/Cairo-Black.ttf
+in those cases you can use the static font files for Noto Naskh Arabic:
+  static/NotoNaskhArabic-Regular.ttf
+  static/NotoNaskhArabic-Medium.ttf
+  static/NotoNaskhArabic-SemiBold.ttf
+  static/NotoNaskhArabic-Bold.ttf
 
 Get started
 -----------
