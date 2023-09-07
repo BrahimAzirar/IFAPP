@@ -3,6 +3,7 @@ const cors = require('cors');
 const mysql = require('mysql2');
 
 const students = require('./Routes/StudentRoutes');
+const admin = require('./Routes/AdminRoutes');
 
 const app = ex();
 const options = {
@@ -25,6 +26,7 @@ app.use(ex.json());
 app.use(cors());
 
 app.use('/students', students);
+app.use('/admin', admin);
 
 app.locals.mysql = connect;
 

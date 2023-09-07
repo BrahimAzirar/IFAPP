@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Cairo Bold';
-    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Bold.ttf');
+    src: url('../../public/Fonts/Cairo/static/Cairo-Bold.ttf');
 }
 
 @font-face {
     font-family: 'Cairo regular';
-    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Regular.ttf');
+    src: url('../../public/Fonts/Cairo/static/Cairo-Regular.ttf');
 }
 
 * {
@@ -14,10 +14,11 @@
     box-sizing: border-box;
     outline: none;
     direction: rtl;
+    text-decoration: none;
 }
 
 #StudentPage {
-    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
+    background-color: #00C0FA;
 }
 
 /*...................... Header Start ......................*/
@@ -89,14 +90,14 @@
     margin: 5px 0 20px 0;
     font-size: 2rem;
     font-family: 'Cairo Bold';
-    color: #6868ff;
+    color: white;
 }
 
 #StudentPage section > div:first-child p {
     text-align: center;
     font-family: 'Cairo regular';
-    font-size: 1.2rem;
-    color: #6868ffba;
+    font-size: 1.1rem;
+    color: white;
     font-weight: bold;
     line-height: 40px;
 }
@@ -116,7 +117,7 @@
     text-align: center;
     font-size: 1.3rem;
     font-family: 'Cairo Bold';
-    color: #6868ff;
+    color: white;
 }
 
 #StudentPage section > form div:not(:nth-child(1)) {
@@ -127,25 +128,18 @@
 }
 
 .InputsStyle {
-    /* padding: 5px 7px;
-    font-family: 'Cairo regular';
-    border-radius: 5px; */
-    /* font-size: .7rem; */
-    /* border: 2px solid rgba(111, 111, 111, 0.89);
-    background-color: rgb(246, 246, 246); */
-
     padding: 5px 7px;
     font-family: 'Cairo regular';
     border: none;
-    border-bottom: 3px solid #6868ffba;
+    border-bottom: 3px solid white;
     background-color: transparent;
-    color: #6868ff;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
 }
 
 .InputsStyle::placeholder {
-    color: #6868ffd0;
+    color: rgba(255, 255, 255, 0.751);
 }
 
 .InputWith97 {

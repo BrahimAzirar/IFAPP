@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Cairo Bold';
-    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Bold.ttf');
+    src: url('../../public/Fonts/Cairo/static/Cairo-Bold.ttf');
 }
 
 @font-face {
     font-family: 'Cairo regular';
-    src: url('../../public/Fonts/Noto_Naskh_Arabic/static/NotoNaskhArabic-Regular.ttf');
+    src: url('../../public/Fonts/Cairo/static/Cairo-Regular.ttf');
 }
 
 #AdminPage {
@@ -16,7 +16,7 @@
 /* ....................... Admin page header start ....................... */
 
 #AdminPageHeader {
-    height: 11%;
+    height: 10%;
     padding: 0 35px;
     display: flex;
     flex-direction: row-reverse;
@@ -27,7 +27,7 @@
 
 #AdminPageHeader > div:last-of-type {
     position: relative;
-    padding: 7px 25px;
+    padding: 5px 20px;
     cursor: pointer;
     background-color: #459fff;
     color: white;
@@ -35,7 +35,7 @@
 }
 
 #AdminPageHeader > div:last-of-type > div:first-of-type {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-family: 'Cairo regular';
 }
 
@@ -46,13 +46,16 @@
     height: 150%;
     padding: 10px 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
+    background-color: #459fff;
 }
 
 #AdminPageHeader > div:last-of-type > div:last-of-type a {
+    width: 100%;
+    padding: 5px 0;
     font-size: 1.2rem;
+    text-align: center;
+    color: white;
 }
 
 .HideLogoutBtn {
@@ -66,6 +69,113 @@
 
 #AdminPageSection {
     height: 89%;
+}
+
+#AdminPageSection > div:first-of-type form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+}
+
+#AdminPageSection > div:first-of-type form > * {
+    margin: 0 20px;
+}
+
+#AdminPageSection > div:first-of-type form > input {
+    width: 40%;
+    padding: 5px 7px;
+    font-family: 'Cairo regular';
+    border: none;
+    border-bottom: 3px solid #6868ffba;
+    background-color: transparent;
+    color: #6868ff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#AdminPageSection > div:first-of-type form > input::placeholder {
+    color: #6868ffd0;
+}
+
+#AdminPageSection > div:first-of-type form > select {
+    padding: 5px 7px;
+    font-family: 'Cairo regular';
+    border: none;
+    border-bottom: 3px solid #6868ffba;
+    background-color: transparent;
+    color: #6868ff;
+    font-size: .87rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#RegisterRequestsContent {
+    height: 81%;
+    overflow: scroll;
+    padding: 25px 10px 7px 10px;
+}
+
+#RegisterRequestsContent table {
+    min-width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    color: #6868ff;
+    background: white;
+}
+
+#RegisterRequestsContent table, #RegisterRequestsContent table tr, #RegisterRequestsContent table, th,
+#RegisterRequestsContent table td {
+    border: 2px solid #6868ffba;
+    text-wrap: nowrap;
+}
+
+#RegisterRequestsContent table, th {
+    font-family: 'Cairo Bold';
+}
+
+#RegisterRequestsContent table td {
+    font-family: 'Cairo regular';
+}
+
+#RegisterRequestsContent table, th,
+#RegisterRequestsContent table td {
+    padding: 5px;
+}
+
+#RegisterRequestsFooter {
+    height: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#RegisterRequestsFooter button {
+    margin: 0 15px;
+    padding: 5px 20px;
+    font-size: .8rem;
+    border: none;
+    font-family: 'Cairo bold';
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.RemoveBtn {
+    background-color: rgba(253, 78, 78, 0.895);
+}
+
+.RemoveBtn:hover {
+    background-color: rgb(253, 78, 78);
+}
+
+.SaveBtn {
+    background-color: rgba(68, 239, 68, 0.863);
+}
+
+.SaveBtn:hover {
+    background-color: rgb(68, 239, 68);
 }
 
 /* ....................... Admin page section end ....................... */

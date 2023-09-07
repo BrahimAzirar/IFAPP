@@ -1,14 +1,35 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import RegisterRequests from './RegisterRequests';
 import './AdminPage.css';
 
 export default function AdminPage() {
 
-    const LogouBtn = useRef();
+  const [Requests, setRequests] = useState([]);
+  const [Req, setReq] = useState([]);
 
-    const ShowLogoutBtn = () => {
-        LogouBtn.current.classList.toggle('HideLogoutBtn');
+  const LogouBtn = useRef();
+
+  useEffect(() => {
+    const fetchRequests = async () => {
+      try {
+        const apidomain = process.env.REACT_APP_API_DOMIAN;
+        const result = (await axios.get(`${apidomain}/admin/getAllRequests`)).data;
+        if (result.err) new Error(result.err);
+        if (result.response.length) {
+          setRequests(result.response); setReq(result.response);
+        };
+      } catch (error) {
+        alert(error.message);
+      };
     };
+
+    fetchRequests();
+  }, []);
+
+  const ShowLogoutBtn = () => {
+      LogouBtn.current.classList.toggle('HideLogoutBtn');
+  };
 
   return (
     <div id='AdminPage'>
@@ -37,12 +58,18 @@ export default function AdminPage() {
                 </select>
               </form>
             </div>
-            <div id='RegisterRequestsContent'></div>
-            <div>
-              <button>حذف الكل</button>
-              <button>حذف</button>
-              <button>احفظ الكل</button>
-              <button>احفظ</button>
+            <div id='RegisterRequestsContent'>
+              { 
+                Req.length ?
+                  <RegisterRequests data={Req} /> :
+                  <p className='notdata'>No Data ...</p>
+              }
+            </div>
+            <div id='RegisterRequestsFooter'>
+              <button className='RemoveBtn'>حذف الكل</button>
+              <button className='RemoveBtn'>حذف</button>
+              <button className='SaveBtn'>احفظ الكل</button>
+              <button className='SaveBtn'>احفظ</button>
             </div>
         </section>
     </div>
