@@ -11,5 +11,6 @@ const admin = ex.Router();
 //////////////// APIs ////////////////
 
 admin.get('/getAllRequests', AdminController.GetAllStudentsRequests);
+admin.post('/DelteRequests', AdminController.DeleteData);
 
 module.exports = admin;

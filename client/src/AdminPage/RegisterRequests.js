@@ -4,8 +4,12 @@ export default function RegisterRequests({ data, callback }) {
 
   const SelectRow = (e) => {
     const Parent = e.target.parentElement;
+    const id = parseInt(Parent.firstElementChild.textContent);
+
     Parent.classList.toggle('SelectRow');
-    callback(prev => [...prev, parseInt(Parent.firstElementChild.textContent)]);
+
+    if (Parent.classList.contains('SelectRow')) callback(prev => [...prev, id]);
+    else callback(prev => prev.filter(ele => ele !== id));
   };
 
   return (

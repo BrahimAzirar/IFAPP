@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import './StudentPage.css';
 import './Responsive.css';
 
@@ -8,12 +7,13 @@ export default function StudentPage() {
 
     const TargetForm = useRef();
     const parentOfImages = useRef();
-    const redirect = useNavigate();
+
     const Images = [
-        '/Images/Specialities/img1.jpeg',
-        '/Images/Specialities/img2.jpeg',
-        '/Images/Specialities/img3.jpeg',
-        '/Images/Specialities/img4.jpeg',
+        '/Images/Specialities/p1.jpg',
+        '/Images/Specialities/p2.jpg',
+        '/Images/Specialities/p3.jpg',
+        '/Images/Specialities/p 4.jpg',
+        '/Images/Specialities/p 5.jpg',
     ];
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export default function StudentPage() {
             if (result.err) throw new Error(result.err);
             if (result.response) {
                 alert('تم التسجيل بنجاح');
-                window.location.reload();
+                // window.location.reload();
             }
         } catch (error) {
             alert(error.message);
@@ -76,7 +76,7 @@ export default function StudentPage() {
     <div id='StudentPage'>
         <header>
             <div>
-                <h1>Logo</h1>
+                <div> <img src='/Images/logo.svg' /> </div>
             </div>
             <div ref={parentOfImages}>
                 { Images.map((ele, idx) => <img key={idx} src={ele} />) }

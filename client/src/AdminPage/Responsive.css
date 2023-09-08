@@ -1,0 +1,15 @@
+@media (min-width: 300px) and (max-width: 370px) {
+    #RegisterRequestsContent {
+        height: 75%;
+    }
+
+    #RegisterRequestsFooter {
+        flex-wrap: wrap;
+        height: 16%;
+    }
+
+    #RegisterRequestsFooter button {
+        width: calc(70% / 2);
+        font-size: .7rem;
+    }
+}

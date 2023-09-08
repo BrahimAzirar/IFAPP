@@ -26,6 +26,24 @@ class Model {
             console.log(`the error from Model.js in GetAllData: ${error.message}`);
         }
     }
+
+    static async DeleteData (db, targets) {
+        try {
+            const sql1 = `DELETE FROM Students`;
+            const sql2 = `DELETE FROM Students WHERE StudentId = ?`;
+
+            if (targets.length) {
+                for (let ele of targets) {
+                    await db.promise().query(sql2, ele);
+                };
+            } else {
+                await db.promise().query(sql1);
+            };
+        } catch (error) {
+            console.log(`the error from Model.js in DeleteData: ${error.message}`);
+            return false;
+        }
+    }
 }
 
 module.exports = { Model };

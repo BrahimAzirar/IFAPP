@@ -11,4 +11,17 @@ const GetAllStudentsRequests = async (req, res) => {
     }
 }
 
-module.exports = { GetAllStudentsRequests };
+const DeleteData = async (req, res) => {
+    try {
+        const { mysql } = req.app.locals;
+        const targets = req.body;
+
+        const result = await Model.DeleteData(mysql, targets);
+        if (!result) throw new Error(''); 
+    } catch (error) {
+        console.log(`The error from AdminController.js DeleteData: ${error.message}`);
+        res.json({ err: 'خطأ في الخادم حاول لاحقا' });
+    };
+};
+
+module.exports = { GetAllStudentsRequests, DeleteData };

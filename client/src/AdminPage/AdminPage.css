@@ -13,6 +13,45 @@
     background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
 }
 
+#DeletingAlert {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 30%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px rgb(155, 155, 155);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: 'Cairo Bold';
+    z-index: 100;
+}
+
+#DeletingAlert > div:first-child {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+#DeletingAlert > div:first-child svg {
+    cursor: pointer;
+}
+
+#DeletingAlert > div:first-child svg:hover {
+    opacity: .6;
+}
+
+.disabelePage {
+    pointer-events: none;
+    opacity: .8;
+}
+
 /* ....................... Admin page header start ....................... */
 
 #AdminPageHeader {
@@ -23,6 +62,11 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 10px 1px rgb(0 0 0 / 35%);
+    background-color: white;
+}
+
+#AdminPageHeader > div {
+    width: 11%;
 }
 
 #AdminPageHeader > div:last-of-type {
@@ -183,4 +227,13 @@
     background-color: rgb(68, 239, 68);
 }
 
+.notdata {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-family: 'Cairo Bold';
+}
 /* ....................... Admin page section end ....................... */
