@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './StudentPage.css';
 import './Responsive.css';
 
@@ -7,6 +8,7 @@ export default function StudentPage() {
 
     const TargetForm = useRef();
     const parentOfImages = useRef();
+    const redirect = useNavigate();
     const Images = [
         '/Images/Specialities/img1.jpeg',
         '/Images/Specialities/img2.jpeg',
@@ -61,7 +63,10 @@ export default function StudentPage() {
             if (CheckPhoneNumberIsNotValid(data.Tele)) throw new Error('هذا رقم غير صلاح اذخل رقما اخر');
             const result = (await axios.post(`${apidomain}/students/register`, data)).data;
             if (result.err) throw new Error(result.err);
-            if (result.response) alert('تم التسجيل بنجاح');
+            if (result.response) {
+                alert('تم التسجيل بنجاح');
+                window.location.reload();
+            }
         } catch (error) {
             alert(error.message);
         }
@@ -79,8 +84,7 @@ export default function StudentPage() {
         </header>
         <section>
             <div>
-                <h1>من نحن</h1>
-                {/* <p>يقدم معهد التمريض IFAPP برامج تعليمية وتدريبية عالية الجودة في مجال التمريض، مما يوفر للطلاب المعرفة والمهارات اللازمة لمهنة التمريض الناجحة. انضم إلينا للشروع في رحلة مجزية في مجال الرعاية الصحية.</p> */}
+                <div> <h1>من نحن</h1> </div>
                 <p>اكتشف معهد التمريض IFAPP، منصة الانطلاق إلى عالم التميز في التمريض. نحن متخصصون في تعليم التمريض الشامل الذي يمكّنك من الحصول على مهنة مجزية في مجال الرعاية الصحية. انضم إلى معهدنا للاستفادة من الموجهين المتمرسين والتدريب العملي وبيئة التعلم الداعمة. رحلتك لتصبح متخصصًا ماهرًا في الرعاية الصحية تبدأ هنا. لا تتردد - سجل اليوم وابدأ الطريق نحو مهنة تمريضية مُرضية مع IFAPP.</p>
             </div>
             <form ref={TargetForm}>

@@ -2,8 +2,10 @@ class Model {
     static async InsertData (db, obj, sql) {
         try {
             await db.promise().query(sql, obj);
+            return true;
         } catch (error) {
             console.log(`the error from Model.js in InsertData: ${error.message}`);
+            return false;
         }
     }
 

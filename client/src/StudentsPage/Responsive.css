@@ -12,13 +12,20 @@
         padding: 10px 20px;
     }
 
+    #StudentPage section > div:first-child > div h1 {
+        width: 50%;
+    }
+
+    #StudentPage section > form div:nth-child(1) h1 {
+        width: 75%;
+    }
+
     #StudentPage section > div:first-child, #StudentPage section > form {
         width: 100%;
     }
 
-    #StudentPage section > div:first-child h1 {
-        font-size: 1.7rem;
-        margin: 15px 0 2px 0;
+    #StudentPage section > div:first-child > div {
+        font-size: 1rem;
     }
 
     #StudentPage section > div:first-child p {
@@ -36,7 +43,7 @@
     }
 
     .InputsStyle {
-        border-bottom: 2px solid #6868ffba;
+        border-width: 2px;
         font-size: 0.8rem;
     }
 
@@ -76,9 +83,17 @@
 }
 
 @media (min-width: 775px) and (max-width: 965px) {
-    #StudentPage section > div:first-child h1 {
+    #StudentPage section > div:first-child > div {
         margin: 5px 0 20px 0;
-        font-size: 1.6rem;
+        font-size: 1.1rem;
+    }
+
+    #StudentPage section > div:first-child > div h1 {
+        width: 60%;
+    }
+
+    #StudentPage section > form div:nth-child(1) h1 {
+        width: 80%;
     }
 
     #StudentPage section > div:first-child p {
@@ -107,6 +122,14 @@
 }
 
 @media (min-width: 965px) and (max-width: 1140px) {
+    #StudentPage section > div:first-child > div h1 {
+        width: 60%;
+    }
+
+    #StudentPage section > form div:nth-child(1) h1 {
+        width: 80%;
+    }
+
     #StudentPage section > div:first-child p {
         font-size: 1rem;
         line-height: 35px;
@@ -122,9 +145,9 @@
         font-size: 1.1rem;
     }
 
-    #StudentPage section > div:first-child h1 {
+    #StudentPage section > div:first-child > div {
         margin: 7px 0 18px 0;
-        font-size: 1.7rem;
+        font-size: 1.1rem;
     }
 }
 

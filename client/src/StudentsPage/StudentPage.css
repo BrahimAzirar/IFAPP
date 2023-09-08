@@ -85,13 +85,24 @@
     width: calc(85% / 2);
 }
 
-#StudentPage section > div:first-child h1 {
-    text-align: center;
+#StudentPage section > div:first-child > div {
+    display: flex;
+    justify-content: center;
     margin: 5px 0 20px 0;
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-family: 'Cairo Bold';
-    color: white;
 }
+
+#StudentPage section > div:first-child > div h1,
+#StudentPage section > form div:nth-child(1) h1 {
+    width: 40%;
+    text-align: center;
+    background-color: white;
+    color: #00C0FA;
+    border-radius: 50px;
+}
+
+#StudentPage section > form div:nth-child(1) h1 { width: 50%; }
 
 #StudentPage section > div:first-child p {
     text-align: center;
@@ -114,10 +125,11 @@
 
 #StudentPage section > form div:nth-child(1) {
     padding: 10px 0 20px 0;
-    text-align: center;
     font-size: 1.3rem;
     font-family: 'Cairo Bold';
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 #StudentPage section > form div:not(:nth-child(1)) {

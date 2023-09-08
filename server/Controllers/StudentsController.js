@@ -14,8 +14,9 @@ const RegisterStudents = async (req, res) => {
             RegisteringDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` 
         }
 
-        await Model.InsertData(mysql, Object.values(data), sql);
-        res.status(200).json({ response: true });
+        const result = await Model.InsertData(mysql, Object.values(data), sql);
+        if (result) res.status(200).json({ response: true });
+        else throw new Error('');
     } catch (error) {
         console.log(`The error from StudentsController.js in RegisterStudents: ${error.message}`);
         res.json({ err: 'خطأ في الخادم حاول لاحقا' });
