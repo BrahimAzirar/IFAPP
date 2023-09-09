@@ -10,7 +10,7 @@
 
 #AdminPage {
     height: 100vh;
-    background: linear-gradient(301deg, #51dbfae0, #97ff97eb);
+    background: #00C0FA;
 }
 
 #DeletingAlert {
@@ -67,6 +67,15 @@
 
 #AdminPageHeader > div {
     width: 11%;
+}
+
+#AdminPageHeader > div:first-of-type {
+    height: 95%;
+}
+
+#AdminPageHeader > div:first-of-type img{
+    width: 100%;
+    height: 100%;
 }
 
 #AdminPageHeader > div:last-of-type {

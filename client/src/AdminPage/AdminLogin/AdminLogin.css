@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Cairo Bold';
+    src: url('../../../public/Fonts/Cairo/static/Cairo-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Cairo regular';
+    src: url('../../../public/Fonts/Cairo/static/Cairo-Regular.ttf');
+}
+
+
+#AdminLogin {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00C0FA;
+}
+
+#AdminLogin form {
+    width: 500px;
+    height: 400px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+} 
+
+#AdminLogin form > div:first-of-type {
+    height: 40%;
+}
+
+#AdminLogin form > div:first-of-type img {
+    width: 100%;
+    height: 100%;
+}
+
+#AdminLogin form > div:last-of-type {
+    height: 60%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#AdminLogin form > div:last-of-type > div {
+    width: 80%;
+    margin: 10px 0;
+}
+
+#AdminLogin form > div:last-of-type > div input {
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-family: 'Cairo regular';
+}
+
+#AdminLogin form > div:last-of-type > div button {
+    width: 100%;
+    padding: 7px 0;
+    font-size: 1rem;
+    font-family: 'Cairo Bold';
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+@media (min-width: 300px) and (max-width: 505px) {
+    #AdminLogin form {
+        width: 95%;
+    }
+
+    #AdminLogin form > div:last-of-type > div {
+        width: 100%;
+
+    }
+
+    #AdminLogin form > div:last-of-type {
+        padding-top: 15px;
+    }
+
+    #AdminLogin form > div:last-of-type > div input {
+        padding: 3px 10px;
+        font-size: .8rem;
+    }
+
+    #AdminLogin form > div:last-of-type > div button {
+        padding: 3px 0;
+        font-size: .9rem;
+    }
+}

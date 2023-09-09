@@ -22,14 +22,13 @@ export default function AdminPage() {
   const apidomain = process.env.REACT_APP_API_DOMIAN;
 
   useEffect(() => {
+    document.title = 'IFAPP | Admin Page'
+
     const fetchRequests = async () => {
       try {
         const result = (await axios.get(`${apidomain}/admin/getAllRequests`)).data;
         if (result.err) new Error(result.err);
-        if (result.response.length) {
-          setRequests(result.response);
-          // setReq(result.response);
-        };
+        if (result.response.length) setRequests(result.response);
       } catch (error) {
         alert(error.message);
       };
