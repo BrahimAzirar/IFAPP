@@ -1,6 +1,5 @@
 const ex = require('express');
 const cors = require('cors');
-const csrf = require('csurf');
 const mysql = require('mysql2');
 const session = require('express-session');
 const store = require('express-mysql-session')(session);
@@ -29,12 +28,11 @@ connect.connect((err) => {
 });
 
 app.use(ex.json());
-app.use(cors());
-app.use(csrf());
+app.use(cors({ origin: 'http://192.168.8.103:3000', credentials: true }));
 app.use(session({ 
-  key: "sessionId", secret: "ldksmojs9u9283u9hwp9h;JCP9j9p8u9p8u49hfp9APAC[[ JCOIJSCJOS",
-  resave: false, saveUninitialized: true, store: SessionsStore, cookie: {
-    secure: true, httpOnly: true, maxAge: 604800000, sameSite: 'strict'
+  key: "ref", secret: "ldksmojs9u9283u9hwp9h;JCP9j9p8u9p8u49hfp9APAC[[ JCOIJSCJOS",
+  resave: false, saveUninitialized: false, store: SessionsStore, cookie: {
+    secure: false, httpOnly: true, maxAge: 1814400000, sameSite: 'strict'
   }
 }));
 

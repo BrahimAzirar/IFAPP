@@ -37,9 +37,33 @@ const login = async (req, res) => {
         }
         else res.status(200).json({ response: false });
     } catch (error) {
-        console.log(`The error from AdminController.js DeleteData: ${error.message}`);
+        console.log(`The error from AdminController.js login: ${error.message}`);
         res.json({ err: 'خطأ في الخادم حاول لاحقا' });
     };
+};
+
+const isAuthenticated = (req, res) => {
+    try {
+        const username = req.session.data.user;
+        if (req.session.data.isAuth) res.status(200).json({
+            response: true, nextPage: `/admin/dashboard/${username}`
+        });
+        else res.status(200).json({ response: false });
+    } catch (error) {
+        console.log(`The error from AdminController.js isAuthenticated: ${error.message}`);
+        res.status(200).json({ response: false });
+    };
+};
+
+const Logout = (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.log(`The error from AdminController.js Logout: ${err.message}`);
+            res.json({ err: 'خطأ في الخادم حاول لاحقا' });
+        };
+
+        res.status(200).json({ previousPage: '/admin/auth/login' });
+    });
 }
 
-module.exports = { GetAllStudentsRequests, DeleteData, login };
+module.exports = { GetAllStudentsRequests, DeleteData, login, isAuthenticated, Logout };
