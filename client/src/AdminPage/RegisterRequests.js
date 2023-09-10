@@ -27,9 +27,9 @@ export default function RegisterRequests({ data, callback }) {
         </tr>
       </thead>
       <tbody>
-        { data.map((ele, idx) => {
+        { data.map(ele => {
           return (
-            <tr key={idx} onClick={SelectRow}>
+            <tr key={ele.StudentId} onClick={SelectRow}>
               <td>{ ele.StudentId }</td>
               <td>{ ele.FirstName }</td>
               <td>{ ele.LastName }</td>

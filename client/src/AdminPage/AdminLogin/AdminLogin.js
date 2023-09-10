@@ -12,18 +12,33 @@ export default function AdminLogin() {
 
     useEffect(() => {
         document.title = 'IFAPP | Admin Login';
+
+        const CheckUserIsAuth = async () => {
+            try {
+                const result = (await axios.get(`${apidomain}/admin/isAuthenticated`, { withCredentials: true })).data
+                if (result.err) throw new Error(result.err);
+                if (result.response) redirect(result.nextPage);
+            } catch (error) {
+                alert(error.message);
+            };
+        };
+
+        CheckUserIsAuth();
     }, []);
 
     const login = async (e) => {
         e.preventDefault();
         try {
             const data = Object.fromEntries(new FormData(formtarget.current));
-            const result = (await axios.post(`${apidomain}/admin/authentication/login`, data)).data;
+            const result = (
+                await axios.post(`${apidomain}/admin/authentication/login`, data, { withCredentials: true })
+            ).data;
+
             if (result.err) throw new Error(result.err);
             if (result.response) redirect(result.nextPage);
             else throw new Error('اسم المستخدم أو كلمة المرور غير صحيحة');
         } catch (error) {
-            alert(error)
+            alert(error.message);
         };
     };
 

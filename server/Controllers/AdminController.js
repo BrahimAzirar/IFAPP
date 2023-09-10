@@ -46,7 +46,7 @@ const isAuthenticated = (req, res) => {
     try {
         const username = req.session.data.user;
         if (req.session.data.isAuth) res.status(200).json({
-            response: true, nextPage: `/admin/dashboard/${username}`
+            response: true, nextPage: `/admin/dashboard/${username}`, username
         });
         else res.status(200).json({ response: false });
     } catch (error) {

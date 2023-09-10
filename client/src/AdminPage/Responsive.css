@@ -1,4 +1,22 @@
 @media (min-width: 100px) and (max-width: 450px) {
+    #DeletingAlert {
+        width: 95%;
+        height: 25%;
+    }
+
+    #DeletingAlert p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    #DeletingAlert > div:first-child {
+        top: 7px;
+    }
+    
+    #DeletingAlert > div:first-child svg {
+        font-size: 1rem;
+    }
+
     #AdminPageHeader {
         height: 8%;
         padding: 0 5px;
@@ -71,6 +89,23 @@
 
 
 @media (min-width: 450px) and (max-width: 550px) {
+    #DeletingAlert {
+        width: 95%;
+        height: 25%;
+    }
+
+    #DeletingAlert p {
+        font-size: 1.2rem;
+    }
+
+    #DeletingAlert > div:first-child {
+        top: 10px;
+    }
+    
+    #DeletingAlert > div:first-child svg {
+        font-size: 1.5rem;
+    }
+
     #AdminPageHeader {
         padding: 0 15px;
     }
@@ -112,12 +147,30 @@
 }
 
 @media (min-width: 550px) and (max-width: 610px) {
+    #DeletingAlert {
+        width: 75%;
+        height: 20%;
+    }
+
     #AdminPageHeader > div:last-of-type {
         width: 25% !important;
     }
 }
 
 @media (min-width: 550px) and (max-width: 800px) {
+    #DeletingAlert {
+        width: 75%;
+        height: 25%;
+    }
+
+    #DeletingAlert > div:first-child {
+        top: 10px;
+    }
+
+    #DeletingAlert > div:first-child svg {
+        font-size: 1.3rem;
+    }
+
     #AdminPageHeader > div:first-of-type {
         width: 30%;
         display: flex;
@@ -158,6 +211,19 @@
 }
 
 @media (min-width: 800px) and (max-width: 1420px) {
+    #DeletingAlert {
+        width: 600px;
+        height: 25%;
+    }
+
+    #DeletingAlert > div:first-child {
+        top: 10px;
+    }
+
+    #DeletingAlert > div:first-child svg {
+        font-size: 1.3rem;
+    }
+
     #AdminPageHeader > div:first-of-type {
         width: 170px;
     }

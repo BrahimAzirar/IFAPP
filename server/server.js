@@ -28,7 +28,7 @@ connect.connect((err) => {
 });
 
 app.use(ex.json());
-app.use(cors({ origin: 'http://192.168.8.103:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(session({ 
   key: "ref", secret: "ldksmojs9u9283u9hwp9h;JCP9j9p8u9p8u49hfp9APAC[[ JCOIJSCJOS",
   resave: false, saveUninitialized: false, store: SessionsStore, cookie: {

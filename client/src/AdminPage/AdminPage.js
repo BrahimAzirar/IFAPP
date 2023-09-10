@@ -3,18 +3,21 @@ import axios from 'axios';
 import RegisterRequests from './RegisterRequests';
 import DeletingAlert from './DeletingAlert';
 import { CSVLink } from 'react-csv';
+import { useNavigate, useParams } from 'react-router-dom'
 import './AdminPage.css';
 import './Responsive.css';
 
 export default function AdminPage() {
 
-  const [Requests, setRequests] = useState([]);
-  const [Req, setReq] = useState([]);
-  const [TargetRows, setTargetRows] = useState([]);
-  const [TargetRowsData, setTargetRowsData] = useState([]);
-  const [ShowDeletingAlert, setShowDeletingAlert] = useState(false);
+  const [Requests, setRequests] = useState([]); // getting all students data from datababe
+  const [Req, setReq] = useState([]); // this for getting all data from 'Requets' state
+  const [TargetRows, setTargetRows] = useState([]); // this state for storing students data id that selected by the admin in the table
+  const [TargetRowsData, setTargetRowsData] = useState([]); // this state for getting all the data by students ids stored in the 'TargetRows' state
+  const [ShowDeletingAlert, setShowDeletingAlert] = useState(false); // this state for controlling appearing the removing students data alert
 
-  const Callbacks = { setRequests, setShowDeletingAlert };
+  const username = useParams().username;
+  const Callbacks = { setRequests, setShowDeletingAlert, setTargetRows };
+  const redirect = useNavigate();
 
   const LogouBtn = useRef();
   const selectTag = useRef();
@@ -24,6 +27,7 @@ export default function AdminPage() {
   useEffect(() => {
     document.title = 'IFAPP | Admin Page'
 
+    // this function for fetching all students data from database and storing her in 'Requests' state
     const fetchRequests = async () => {
       try {
         const result = (await axios.get(`${apidomain}/admin/getAllRequests`)).data;
@@ -34,18 +38,34 @@ export default function AdminPage() {
       };
     };
 
+    /*
+      This function is to verify that a user has permission to access this page. 
+      If he does not have permission, he will return to the login page.
+    */ 
+    const CheckUserIsAuth = async () => {
+      try {
+          const result = (await axios.get(`${apidomain}/admin/isAuthenticated`, { withCredentials: true })).data
+          if (result.err) throw new Error(result.err);
+          if (!result.response || result.username !== username) redirect('/admin/auth/login');
+      } catch (error) {
+        redirect('/admin/auth/login');
+      };
+    };
+
     fetchRequests();
+    CheckUserIsAuth();
   }, []);
 
-  useEffect(() => {
-    setReq(Requests);
-  }, [Requests]);
+  // this for giving all 'Requets' data in 'Req' status
+  useEffect(() => setReq(Requests), [Requests]);
 
   useEffect(() => {
     for (let ele of Req) {
       if (TargetRows.includes(parseInt(ele.StudentId))) setTargetRowsData(prev => [...new Set([...prev, ele])]);
       else setTargetRowsData(prev => prev.filter(el => el.StudentId !== ele.StudentId));
     };
+
+    console.log(TargetRows);
   }, [TargetRows]);
 
   useEffect(() => {
@@ -78,6 +98,15 @@ export default function AdminPage() {
     };
   };
 
+  const LogouFromAdminPage = async () => {
+    try {
+      const result = (await axios.get(`${apidomain}/admin/logout`, { withCredentials: true })).data;
+      if (result.err) throw new Error(result.err);
+      redirect(result.previousPage);
+    } catch (error) {
+      alert(error.message);
+    };
+  };
 
   return (
     <>
@@ -87,7 +116,9 @@ export default function AdminPage() {
             <div> <img src='/Images/logo.svg' /> </div>
             <div onClick={ShowLogoutBtn}>
                 <div>اسم المستخدم</div>
-                <div className='HideLogoutBtn' ref={LogouBtn}><a href='#'>تسجيل الخروج</a></div>
+                <div className='HideLogoutBtn' ref={LogouBtn}>
+                  <a onClick={LogouFromAdminPage}>تسجيل الخروج</a>
+                </div>
             </div>
         </header>
         <section id='AdminPageSection'>

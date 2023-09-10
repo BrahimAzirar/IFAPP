@@ -65,7 +65,7 @@ export default function StudentPage() {
             if (result.err) throw new Error(result.err);
             if (result.response) {
                 alert('تم التسجيل بنجاح');
-                // window.location.reload();
+                window.location.reload();
             }
         } catch (error) {
             alert(error.message);
