@@ -1,20 +1,28 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './StudentPage.css';
 import './Responsive.css';
 
 export default function StudentPage() {
 
-    const TargetForm = useRef();
-    const parentOfImages = useRef();
-
-    const Images = [
+    const defaultImg = [
         '/Images/Specialities/p1.jpg',
         '/Images/Specialities/p2.jpg',
         '/Images/Specialities/p3.jpg',
         '/Images/Specialities/p 4.jpg',
         '/Images/Specialities/p 5.jpg',
     ];
+
+    const responsiveImg = [
+        '/Images/responsiveImages/img1.jpg',
+        '/Images/responsiveImages/img2.jpg',
+        '/Images/responsiveImages/img3.jpg',
+        '/Images/responsiveImages/img4.jpg',
+    ];
+
+    const [Images, setImages] = useState([...defaultImg]);
+    const TargetForm = useRef();
+    const parentOfImages = useRef();
 
     useEffect(() => {
         document.title = 'IFFAP | تسجيل';
@@ -36,6 +44,9 @@ export default function StudentPage() {
                 InTheFrontEnd.classList.remove('ToRight');
             }, 1000);
         }, 5000);
+
+        if (window.innerWidth <= 750) setImages(responsiveImg);
+        else setImages(defaultImg);
     }, []);
 
     const Registring = async (e) => {
