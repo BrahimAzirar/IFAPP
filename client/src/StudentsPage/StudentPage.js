@@ -75,8 +75,8 @@ export default function StudentPage() {
             const result = (await axios.post(`${apidomain}/students/register`, data)).data;
             if (result.err) throw new Error(result.err);
             if (result.response) {
-                alert('تم التسجيل بنجاح');
-                window.location.reload();
+                // alert('تم التسجيل بنجاح');
+                // window.location.reload();
             }
         } catch (error) {
             alert(error.message);

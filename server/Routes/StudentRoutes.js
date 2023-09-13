@@ -5,8 +5,8 @@ const students = ex.Router();
 
 ////////////// Middlewares //////////////
 
-students.post('/register', StudentsMiddleware.CheckEmailIsNotExist);
-students.post('/register', StudentsMiddleware.CheckPhoneNumberIsExist);
+// students.post('/register', StudentsMiddleware.CheckEmailIsNotExist);
+// students.post('/register', StudentsMiddleware.CheckPhoneNumberIsExist);
 
 
 ////////////// APIs //////////////

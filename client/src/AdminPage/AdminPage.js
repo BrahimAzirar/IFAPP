@@ -64,8 +64,6 @@ export default function AdminPage() {
       if (TargetRows.includes(parseInt(ele.StudentId))) setTargetRowsData(prev => [...new Set([...prev, ele])]);
       else setTargetRowsData(prev => prev.filter(el => el.StudentId !== ele.StudentId));
     };
-
-    console.log(TargetRows);
   }, [TargetRows]);
 
   useEffect(() => {

@@ -11,12 +11,15 @@ export default function DeletingAlert({ callback, targets }) {
   */
   const DeleteItems = async () => {
     try {
-      const result = await axios.post(`${apidomain}/admin/DelteRequests`, targets);
-      if (result.err) throw new Error(result.err);
       if (targets.length) {
         callback.setRequests(prev => prev.filter(ele => !targets.includes(ele.StudentId)));
         callback.setShowDeletingAlert(false); callback.setTargetRows([]);
+      } else {
+        callback.setRequests([]); callback.setShowDeletingAlert(false);
+        callback.setTargetRows([]);
       }
+      const result = await axios.post(`${apidomain}/admin/DelteRequests`, targets);
+      if (result.err) throw new Error(result.err);
     } catch (error) {
       alert(error.message);
     };
