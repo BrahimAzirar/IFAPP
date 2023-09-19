@@ -3,17 +3,18 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const session = require('express-session');
 const store = require('express-mysql-session')(session);
+require('dotenv').config();
 
 const students = require('./Routes/StudentRoutes');
 const admin = require('./Routes/AdminRoutes');
 
 const app = ex();
 const options = {
-	host: 'localhost',
-	port: 3306,
-	user: 'root',
-	password: '26022002',
-	database: 'IFAPPDB'
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_DATABASE
 };
 
 const SessionsStore = new store(options);
@@ -42,5 +43,4 @@ app.use('/admin', admin);
 app.locals.mysql = connect;
 
 
-
-app.listen(3500, console.log('Starting server ...'));
+app.listen(3500, console.log('http://localhost:3500'));

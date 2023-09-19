@@ -16,7 +16,10 @@ export default function AdminLogin() {
         const CheckUserIsAuth = async () => {
             try {
                 const result = (await axios.get(`${apidomain}/admin/isAuthenticated`, { withCredentials: true })).data
-                if (result.err) throw new Error(result.err);
+                if (result.err) {
+                    console.log(result.err);
+                    throw new Error(result.err)
+                };
                 if (result.response) redirect(result.nextPage);
             } catch (error) {
                 alert(error.message);
