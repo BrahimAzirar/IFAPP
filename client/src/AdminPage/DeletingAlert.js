@@ -18,7 +18,7 @@ export default function DeletingAlert({ callback, targets }) {
         callback.setRequests([]); callback.setShowDeletingAlert(false);
         callback.setTargetRows([]);
       }
-      const result = await axios.post(`${apidomain}/admin/DelteRequests`, targets);
+      const result = await axios.post(`${apidomain}/admin/DelteRequests`, targets, { withCredentials: true });
       if (result.err) throw new Error(result.err);
     } catch (error) {
       alert(error.message);

@@ -1,11 +1,14 @@
 const ex = require('express');
 const AdminController = require('../Controllers/AdminController');
+const AdminMiddleware = require('../Middlewares/AdminMiddleware');
 
 const admin = ex.Router();
 
 //////////////// Middleware ////////////////
 
-
+admin.use('/getAllRequests', AdminMiddleware.AdminIsAuthenticated);
+admin.use('/DelteRequests', AdminMiddleware.AdminIsAuthenticated);
+admin.use('/logout', AdminMiddleware.AdminIsAuthenticated);
 
 
 //////////////// APIs ////////////////

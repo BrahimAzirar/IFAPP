@@ -30,7 +30,7 @@ export default function AdminPage() {
     // this function for fetching all students data from database and storing her in 'Requests' state
     const fetchRequests = async () => {
       try {
-        const result = (await axios.get(`${apidomain}/admin/getAllRequests`)).data;
+        const result = (await axios.get(`${apidomain}/admin/getAllRequests`, { withCredentials: true })).data;
         if (result.err) new Error(result.err);
         if (result.response.length) setRequests(result.response);
       } catch (error) {
