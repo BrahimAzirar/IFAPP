@@ -7,7 +7,7 @@ const CheckEmailIsNotExist = async (req, res, next) => {
         const { Email } = req.body;
         const sql = "SELECT ? IN (SELECT Email FROM Students) AS isExist";
         const result = await Model.IsIxist(mysql, [Email], sql);
-        if (! result) next();
+        if (!result) next();
         else res.json({ err: 'هذا الإيمايل موجود بالفعل أذخل إيمايل أخر' });
     } catch (error) {
         console.log(`The error from StudentsMiddleware.js in CheckEmailIsNotExist: ${error.message}`);
@@ -21,7 +21,7 @@ const CheckPhoneNumberIsExist = async (req, res, next) => {
         const { Tele } = req.body;
         const sql = "SELECT ? IN (SELECT Tele FROM Students) AS isExist";
         const result = await Model.IsIxist(mysql, [Tele], sql);
-        if (! result) next();
+        if (!result) next();
         else res.json({ err: 'هذا رقم الهاتف موجود بالفعل أذخل رقم أخر' });
     } catch (error) {
         console.log(`The error from StudentsMiddleware.js in CheckPhoneNumberIsExist: ${error.message}`);

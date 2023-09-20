@@ -9,6 +9,7 @@ import './Responsive.css';
 
 export default function AdminPage() {
 
+  const [IsAuth, setIsAuth] = useState(false);
   const [Requests, setRequests] = useState([]); // getting all students data from datababe
   const [Req, setReq] = useState([]); // this for getting all data from 'Requets' state
   const [TargetRows, setTargetRows] = useState([]); // this state for storing students data id that selected by the admin in the table
@@ -47,27 +48,35 @@ export default function AdminPage() {
           const result = (await axios.get(`${apidomain}/admin/isAuthenticated`, { withCredentials: true })).data
           if (result.err) throw new Error(result.err);
           if (!result.response || result.username !== username) redirect('/admin/auth/login');
+          else {
+            fetchRequests(); setIsAuth(true);
+          }
       } catch (error) {
         redirect('/admin/auth/login');
       };
     };
 
-    fetchRequests();
     CheckUserIsAuth();
   }, []);
 
   // this for giving all 'Requets' data in 'Req' status
-  useEffect(() => setReq(Requests), [Requests]);
+  useEffect(() => {
+    if (IsAuth) setReq(Requests);
+  }, [Requests]);
 
   useEffect(() => {
-    for (let ele of Req) {
-      if (TargetRows.includes(parseInt(ele.StudentId))) setTargetRowsData(prev => [...new Set([...prev, ele])]);
-      else setTargetRowsData(prev => prev.filter(el => el.StudentId !== ele.StudentId));
-    };
+    if (IsAuth) {
+      for (let ele of Req) {
+        if (TargetRows.includes(parseInt(ele.StudentId))) setTargetRowsData(prev => [...new Set([...prev, ele])]);
+        else setTargetRowsData(prev => prev.filter(el => el.StudentId !== ele.StudentId));
+      };
+    }
   }, [TargetRows]);
 
   useEffect(() => {
-    if (ShowDeletingAlert === false) AdminPage.current.classList.remove('disabelePage');
+    if (IsAuth) {
+      if (ShowDeletingAlert === false) AdminPage.current.classList.remove('disabelePage');
+    };
   }, [ShowDeletingAlert]);
 
   const ShowAlert = async () => {
@@ -106,58 +115,60 @@ export default function AdminPage() {
     };
   };
 
-  return (
-    <>
-      { ShowDeletingAlert && <DeletingAlert callback={Callbacks} targets={TargetRows}/> }
-      <div id='AdminPage' ref={AdminPage}>
-        <header id='AdminPageHeader'>
-            <div> <img src='/Images/logo.svg' /> </div>
-            <div onClick={ShowLogoutBtn}>
-                <div>اسم المستخدم</div>
-                <div className='HideLogoutBtn' ref={LogouBtn}>
-                  <a onClick={LogouFromAdminPage}>تسجيل الخروج</a>
-                </div>
-            </div>
-        </header>
-        <section id='AdminPageSection'>
-            <div id='RegisterRequestsHeader'>
-              <form>
-                <input type='search' name='search' placeholder='Search' onChange={handelSearching} />
-                <select ref={selectTag}>
-                  <option value='StudentId'>id</option>
-                  <option value='FirstName'>الاسم الأول</option>
-                  <option value='LastName'>اسم العائلة</option>
-                  <option value='Adress'>العنوان</option>
-                  <option value='Email'>بريد إلكتروني</option>
-                  <option value='Tele'>رقم الهاتف</option>
-                  <option value='AcademicLevel'>المستوى الأكاديمي</option>
-                  <option value='RegisteringDate'>تاريخ</option>
-                </select>
-              </form>
-            </div>
-            <div id='RegisterRequestsContent'>
-              { 
-                Req.length ?
-                  <RegisterRequests data={Req} callback={setTargetRows}/> :
-                  <p className='notdata'>ليست هناك بيانات</p>
-              }
-            </div>
-            <div id='RegisterRequestsFooter'>
-              <button className='RemoveBtn' onClick={ShowAlert}>حذف الكل</button>
-              <button className='RemoveBtn' onClick={ShowAlert}>حذف</button>
-              <button className='SaveBtn'>
-                <CSVLink data={Req} style={{ color: 'white' }}>
-                  احفظ الكل
-                </CSVLink>
-              </button>
-              <button className='SaveBtn'>
-                <CSVLink data={TargetRowsData} style={{ color: 'white' }}>
-                  احفظ
-                </CSVLink>
-              </button>
-            </div>
-        </section>
-      </div>
-    </>
-  );
+  if (IsAuth) {
+    return (
+      <>
+        { ShowDeletingAlert && <DeletingAlert callback={Callbacks} targets={TargetRows}/> }
+        <div id='AdminPage' ref={AdminPage}>
+          <header id='AdminPageHeader'>
+              <div> <img src='/Images/logo.svg' /> </div>
+              <div onClick={ShowLogoutBtn}>
+                  <div>اسم المستخدم</div>
+                  <div className='HideLogoutBtn' ref={LogouBtn}>
+                    <a onClick={LogouFromAdminPage}>تسجيل الخروج</a>
+                  </div>
+              </div>
+          </header>
+          <section id='AdminPageSection'>
+              <div id='RegisterRequestsHeader'>
+                <form>
+                  <input type='search' name='search' placeholder='Search' onChange={handelSearching} />
+                  <select ref={selectTag}>
+                    <option value='StudentId'>id</option>
+                    <option value='FirstName'>الاسم الأول</option>
+                    <option value='LastName'>اسم العائلة</option>
+                    <option value='Adress'>العنوان</option>
+                    <option value='Email'>بريد إلكتروني</option>
+                    <option value='Tele'>رقم الهاتف</option>
+                    <option value='AcademicLevel'>المستوى الأكاديمي</option>
+                    <option value='RegisteringDate'>تاريخ</option>
+                  </select>
+                </form>
+              </div>
+              <div id='RegisterRequestsContent'>
+                { 
+                  Req.length ?
+                    <RegisterRequests data={Req} callback={setTargetRows}/> :
+                    <p className='notdata'>ليست هناك بيانات</p>
+                }
+              </div>
+              <div id='RegisterRequestsFooter'>
+                <button className='RemoveBtn' onClick={ShowAlert}>حذف الكل</button>
+                <button className='RemoveBtn' onClick={ShowAlert}>حذف</button>
+                <button className='SaveBtn'>
+                  <CSVLink data={Req} style={{ color: 'white' }}>
+                    احفظ الكل
+                  </CSVLink>
+                </button>
+                <button className='SaveBtn'>
+                  <CSVLink data={TargetRowsData} style={{ color: 'white' }}>
+                    احفظ
+                  </CSVLink>
+                </button>
+              </div>
+          </section>
+        </div>
+      </>
+    );
+  }
 };
