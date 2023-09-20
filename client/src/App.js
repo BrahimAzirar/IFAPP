@@ -6,11 +6,11 @@ import AdminPage from './AdminPage/AdminPage';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename='/'>
       <Routes>
-        <Route path='/' element={<StudentPage />} />
-        <Route path='/admin/auth/login' element={<AdminLogin />} />
-        <Route path='/admin/dashboard/:username' element={<AdminPage />} />
+        <Route exact path='/' element={<StudentPage />} />
+        <Route exact path='/admin/auth/login' element={<AdminLogin />} />
+        <Route exact path='/admin/dashboard/:username' element={<AdminPage />} />
       </Routes>
     </Router>
   );
