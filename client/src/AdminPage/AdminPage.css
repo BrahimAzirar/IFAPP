@@ -84,7 +84,7 @@
 
 #AdminPageHeader > div:last-of-type {
     position: relative;
-    padding: 5px 20px;
+    padding: 6px 20px;
     cursor: pointer;
     background-color: #459fff;
     color: white;
@@ -92,8 +92,9 @@
 }
 
 #AdminPageHeader > div:last-of-type > div:first-of-type {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Cairo regular';
+    direction: ltr !important;
 }
 
 #AdminPageHeader > div:last-of-type > div:last-of-type {

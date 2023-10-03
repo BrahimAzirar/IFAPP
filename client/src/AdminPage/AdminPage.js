@@ -123,7 +123,7 @@ export default function AdminPage() {
           <header id='AdminPageHeader'>
               <div> <img src='/Images/logo.svg' /> </div>
               <div onClick={ShowLogoutBtn}>
-                  <div>اسم المستخدم</div>
+                  <div>{ username }</div>
                   <div className='HideLogoutBtn' ref={LogouBtn}>
                     <a onClick={LogouFromAdminPage}>تسجيل الخروج</a>
                   </div>
